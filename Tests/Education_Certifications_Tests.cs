@@ -95,16 +95,18 @@ namespace qa_dotnet_cucumber.Tests
         {
             EducationModel data = JsonHelper.ReadEducationData("Education_Happy");
 
+            
             educationPage.DeleteEducation(data.University);
             educationPage.AddEducation(data);
-            Thread.Sleep(4000);
+
+            driver.Navigate().Refresh();
 
             educationPage.DeleteEducation(data.University);
 
             Assert.That(educationPage.GetMessage(), Does.Contain("removed"), "Delete message failed");
         }
 
-        
+
 
         [Test, Order(7)]
         public void Add_Certification_HappyPath()
@@ -176,11 +178,14 @@ namespace qa_dotnet_cucumber.Tests
            
             certificationsPage.DeleteCertification(data.Certificate);
             certificationsPage.AddCertification(data);
-            Thread.Sleep(4000);
 
             
+            driver.Navigate().Refresh();
+
+           
             certificationsPage.DeleteCertification(data.Certificate);
 
+            
             Assert.That(certificationsPage.GetMessage(), Does.Contain("deleted"));
         }
     }
