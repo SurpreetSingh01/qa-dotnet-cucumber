@@ -1,0 +1,75 @@
+{
+  "Education_Happy": {
+    "University": "Oxford University",
+    "Country": "United Kingdom",
+    "Title": "M.Tech",
+    "Degree": "Computer Science",
+    "Year": "2021"
+  },
+  "Education_Update": {
+    "University": "Cambridge University",
+    "Country": "United Kingdom",
+    "Title": "PHD",
+    "Degree": "Data Science",
+    "Year": "2023"
+  },
+  "Education_Extended": {
+    "University": "The Royal University of Science and Advanced Technology Studies for International Students",
+    "Country": "New Zealand",
+    "Title": "M.Tech",
+    "Degree": "Artificial Intelligence & Machine Learning Specialization",
+    "Year": "2022"
+  },
+  "Education_Special": {
+    "University": "Tech Uni #1 @ 2025",
+    "Country": "Australia",
+    "Title": "B.Tech",
+    "Degree": "C# & .NET Framework v8.0",
+    "Year": "2022"
+  },
+  "Education_Empty": {
+    "University": "",
+    "Country": "Select Country",
+    "Title": "Select Title",
+    "Degree": "",
+    "Year": "Select Year"
+  },
+  "Education_Duplicate": {
+    "University": "Duplicate Uni",
+    "Country": "India",
+    "Title": "B.Sc",
+    "Degree": "Physics",
+    "Year": "2020"
+  },
+
+  "Certification_Happy": {
+    "Certificate": "ISTQB Foundation",
+    "From": "ISTQB",
+    "Year": "2022"
+  },
+  "Certification_Update": {
+    "Certificate": "ISTQB Advanced Level",
+    "From": "ISTQB International",
+    "Year": "2024"
+  },
+  "Certification_Extended": {
+    "Certificate": "Certified Scrum Master Advanced Level II Professional (CSM-A)",
+    "From": "Scrum Alliance International Body of Knowledge",
+    "Year": "2023"
+  },
+  "Certification_Special": {
+    "Certificate": "Azure Certified: DevOps Engineer (AZ-400)",
+    "From": "Microsoft & Partners #1",
+    "Year": "2023"
+  },
+  "Certification_Empty": {
+    "Certificate": "",
+    "From": "",
+    "Year": "Select Year"
+  },
+  "Certification_Duplicate": {
+    "Certificate": "Duplicate Cert",
+    "From": "Test Provider",
+    "Year": "2021"
+  }
+}

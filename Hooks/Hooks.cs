@@ -60,8 +60,7 @@ namespace qa_dotnet_cucumber.Hooks
             _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
             _objectContainer.RegisterInstanceAs(new NavigationHelper(_driver));
             _objectContainer.RegisterInstanceAs(new LoginPage(_driver));
-            _objectContainer.RegisterInstanceAs(new LanguagePage(_driver));
-            _objectContainer.RegisterInstanceAs(new SkillsPage(_driver));
+            
         }
 
         [AfterStep]
