@@ -13,7 +13,9 @@ namespace qa_dotnet_cucumber.Pages
 
         public void NavigateTo(string urlPath)
         {
-            _driver.Navigate().GoToUrl(Hooks.Hooks.Settings.Environment.BaseUrl + urlPath);
+            string baseUrl = "http://10.211.55.2:5003";
+
+            _driver.Navigate().GoToUrl(baseUrl + urlPath);
         }
     }
 }

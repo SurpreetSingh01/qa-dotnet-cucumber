@@ -1,8 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using Reqnroll.BoDi;
-// MUST USE with ExpectedConditions
 using SeleniumExtras.WaitHelpers;
+using System;
 
 namespace qa_dotnet_cucumber.Pages
 {
@@ -10,40 +9,48 @@ namespace qa_dotnet_cucumber.Pages
     {
         private readonly IWebDriver _driver;
         private readonly WebDriverWait _wait;
-        public IWebDriver Driver => _driver;  
 
-        // Locators
-        private readonly By UsernameField = By.Id("username");
-        private readonly By PasswordField = By.Id("password");
-        private readonly By LoginButton = By.CssSelector("button[type='submit']");
-        private readonly By SuccessMessage = By.CssSelector(".flash.success");
+        private readonly By SignInButton = By.XPath("//a[contains(text(),'Sign In')]");
+        private readonly By EmailField = By.Name("email");
+        private readonly By PasswordField = By.Name("password");
+        private readonly By LoginButton = By.XPath("//button[text()='Login']");
 
-        public LoginPage(IWebDriver driver) // Inject IWebDriver directly
+        private readonly By SignOutButton = By.XPath("//button[contains(text(),'Sign Out')]");
+
+        public LoginPage(IWebDriver driver)
         {
             _driver = driver;
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10)); // 10-second timeout
-        }
-        
-        public void Login(string username, string password)
-        {
-            var usernameElement = _wait.Until(ExpectedConditions.ElementIsVisible(UsernameField));
-            usernameElement.SendKeys(username);
-
-            var passwordElement = _wait.Until(d => d.FindElement(PasswordField));
-            passwordElement.SendKeys(password);
-
-            var loginButtonElement = _wait.Until(ExpectedConditions.ElementToBeClickable(LoginButton));
-            loginButtonElement.Click();
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(60));
         }
 
-        public string GetSuccessMessage()
+        public void ClickSignIn()
         {
-            return _wait.Until(d => d.FindElement(SuccessMessage)).Text;
+            _wait.Until(ExpectedConditions.ElementToBeClickable(SignInButton)).Click();
         }
 
-        public bool IsAtLoginPage()
+        public void Login(string email, string password)
         {
-            return _driver.Title.Contains("The Internet");
+            var emailElement = _wait.Until(ExpectedConditions.ElementIsVisible(EmailField));
+            emailElement.Clear();
+            emailElement.SendKeys(email);
+
+            var passElement = _driver.FindElement(PasswordField);
+            passElement.Clear();
+            passElement.SendKeys(password);
+
+            _driver.FindElement(LoginButton).Click();
+        }
+
+        public bool IsSignOutButtonVisible()
+        {
+            try
+            {
+                return _wait.Until(ExpectedConditions.ElementIsVisible(SignOutButton)).Displayed;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                return false;
+            }
         }
     }
 }
